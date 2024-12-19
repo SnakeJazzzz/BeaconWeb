@@ -9,15 +9,35 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     alert("Formulario enviado!");
-    // You will later integrate this with the backend API
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <img src="/assets/banner.jpg" alt="Contact Banner" style={{ width: "100%", height: "300px" }} />
-      <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "80vh",
+        textAlign: "center",
+      }}
+    >
+      <img
+        src="/BeaconLight.svg"
+        alt="Contact Banner"
+        style={{ width: "100%", maxWidth: "600px", marginBottom: "20px" }}
+      />
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+          width: "100%",
+          maxWidth: "400px",
+        }}
+      >
         <input
           type="text"
           name="name"
@@ -25,7 +45,11 @@ const ContactPage = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          style={{ display: "block", margin: "10px auto", padding: "10px", width: "300px" }}
+          style={{
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
         />
         <input
           type="email"
@@ -34,7 +58,11 @@ const ContactPage = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          style={{ display: "block", margin: "10px auto", padding: "10px", width: "300px" }}
+          style={{
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
         />
         <input
           type="text"
@@ -43,9 +71,23 @@ const ContactPage = () => {
           value={formData.phone}
           onChange={handleChange}
           required
-          style={{ display: "block", margin: "10px auto", padding: "10px", width: "300px" }}
+          style={{
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
         />
-        <button type="submit" style={{ padding: "10px 20px", marginTop: "10px", cursor: "pointer" }}>
+        <button
+          type="submit"
+          style={{
+            padding: "10px",
+            backgroundColor: "#646cff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
           Enviar
         </button>
       </form>

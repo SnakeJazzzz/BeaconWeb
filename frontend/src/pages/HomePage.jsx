@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <div style={{ textAlign: "center", color: "#fff", backgroundColor: "#000" }}>
       {/* Main Banner */}
-      <img src="/BeaconLight.svg" alt="Main Banner" style={{ width: "100%", height: "300px" }} />
+      <img src="/BeaconLight.svg" alt="Main Banner" style={{ width: "100%", height: "500px" }} />
 
       {/* Info Section */}
       <div style={{ display: "flex", justifyContent: "space-around", margin: "20px 0" }}>

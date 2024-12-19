@@ -8,12 +8,25 @@ import ContactPage from "./pages/ContactPage";
 function App() {
   return (
     <Router>
-      <TopBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-      <Footer />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          width: "100%",
+          margin: "0 auto",
+          maxWidth: "1200px", // Limit width for larger screens
+        }}
+      >
+        <TopBar />
+        <div style={{ flex: 1 }}> {/* Allows main content to grow */}
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 }
