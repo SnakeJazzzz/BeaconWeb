@@ -13,31 +13,25 @@ const ContactPage = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "80vh",
-        textAlign: "center",
-      }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "20px" }}>
       <img
         src="/BeaconLight.svg"
         alt="Contact Banner"
-        style={{ width: "100%", maxWidth: "600px", marginBottom: "20px" }}
+        className="banner"
       />
       <form
         onSubmit={handleSubmit}
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
+          marginTop: "20px",
           width: "100%",
-          maxWidth: "400px",
+          maxWidth: "600px", // Ensures a proportional max size
+          padding: "20px",
+          backgroundColor: "#ffffff", // White background for the form
+          borderRadius: "10px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Adds a subtle shadow
         }}
       >
+        <h2 style={{ marginBottom: "20px", color: "#000", textAlign: "center" }}>Contáctanos</h2>
         <input
           type="text"
           name="name"
@@ -46,9 +40,15 @@ const ContactPage = () => {
           onChange={handleChange}
           required
           style={{
+            display: "block",
+            width: "100%",
             padding: "10px",
+            marginBottom: "15px",
             borderRadius: "5px",
             border: "1px solid #ccc",
+            backgroundColor: "#ffffff", // White input background
+            color: "#000000", // Black text color
+            fontSize: "16px",
           }}
         />
         <input
@@ -59,9 +59,15 @@ const ContactPage = () => {
           onChange={handleChange}
           required
           style={{
+            display: "block",
+            width: "100%",
             padding: "10px",
+            marginBottom: "15px",
             borderRadius: "5px",
             border: "1px solid #ccc",
+            backgroundColor: "#ffffff", // White input background
+            color: "#000000", // Black text color
+            fontSize: "16px",
           }}
         />
         <input
@@ -72,20 +78,29 @@ const ContactPage = () => {
           onChange={handleChange}
           required
           style={{
+            display: "block",
+            width: "100%",
             padding: "10px",
+            marginBottom: "20px",
             borderRadius: "5px",
             border: "1px solid #ccc",
+            backgroundColor: "#ffffff", // White input background
+            color: "#000000", // Black text color
+            fontSize: "16px",
           }}
         />
         <button
           type="submit"
           style={{
+            width: "100%",
             padding: "10px",
-            backgroundColor: "#646cff",
-            color: "#fff",
-            border: "none",
+            backgroundColor: "#ffffff", // White button
+            color: "#000000", // Black text for contrast
+            border: "1px solid #ccc",
             borderRadius: "5px",
+            fontSize: "16px",
             cursor: "pointer",
+            transition: "all 0.3s ease",
           }}
         >
           Enviar

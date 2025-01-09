@@ -12,8 +12,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #000000; /* Black text for content area */
+  background-color: #f8f8f8;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,23 +21,23 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Additional Colors */
-  --primary-color: #646cff;
-  --secondary-color: #535bf2;
-  --bg-light: #ffffff;
-  --bg-dark: #000000;
-  --text-dark: #213547;
-  --text-light: #ffffff;
+  --primary-bg: #ffffff; /* Pure white for Top Bar and Footer */
+  --contrast-bg: #f8f8f8; /* Slightly off-white for content background */
+  --primary-text: #000000; /* Black text */
+  --secondary-text: #646464; /* Light gray text for Footer */
+  --primary-color: #646cff; /* Accent color for buttons, links */
+  --secondary-color: #535bf2; /* Darker accent color for hover */
 }
 
 /* Global Styles */
 body {
   margin: 0;
-  font-family: var(--font-family, "Inter");
+  font-family: var(--font-family);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--contrast-bg);
+  color: var(--primary-text);
 }
 
 a {
@@ -54,6 +54,7 @@ a:hover {
 h1, h2, h3 {
   margin: 20px 0;
   text-align: center;
+  color: var(--primary-text);
 }
 
 h1 {
@@ -76,7 +77,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   background-color: var(--primary-color);
-  color: var(--text-light);
+  color: var(--primary-bg);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -120,13 +121,114 @@ img {
   text-align: center;
 }
 
+/* Top Bar */
+header {
+  width: 100%;
+  background-color: var(--primary-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Footer */
 footer {
+  width: 100%;
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
   text-align: center;
   padding: 10px;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
 }
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text color */
+  font-size: 16px;
+}
+
+/* Main Banner */
+.banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: var(--contrast-bg);
+}
+
+/* Info Section */
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.info-section div {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+/* Reviews Section */
+.reviews-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.reviews-section div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  flex: 1 1 200px;
+}
+
+/* Clients Section */
+.clients-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.clients-section img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+
+/*Add text on the main banner*/
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.banner-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-text {
+  position: absolute;
+  left: 30px;
+  color: #ffffff; /* White text */
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for better readability */
+}
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
@@ -148,6 +250,11 @@ footer {
 
   .flex {
     flex-direction: column;
+  }
+
+  .info-section, .reviews-section, .clients-section {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
