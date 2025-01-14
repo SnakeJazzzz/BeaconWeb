@@ -1,34 +1,323 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TopBar from "./components/TopBar";
-import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import ContactPage from "./pages/ContactPage";
+/* -----------------------------------------------
+   index.css
+----------------------------------------------- */
+/* -----------------------------------------------
+   1) RESET & ROOT VARIABLES
+----------------------------------------------- */
 
-function App() {
-  return (
-    <Router>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-          width: "100%",
-          margin: "0 auto",
-          maxWidth: "1200px", // Limit width for larger screens
-        }}
-      >
-        <TopBar />
-        <div style={{ flex: 1 }}> {/* Allows main content to grow */}
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
-    </Router>
-  );
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-export default App;
+/* Root Variables */
+:root {
+  --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --primary-bg: #ffffff;      /* Pure white for Top Bar and Footer */
+  --contrast-bg: #f8f8f8;     /* Slightly off-white for page background */
+  --primary-text: #000000;    /* Default text color */
+  --secondary-text: #646464;  /* Light gray text for footer or subtext */
+  --primary-color: #646cff;   /* Accent color */
+  --secondary-color: #535bf2; /* Darker accent color for hover */
+
+  font-family: var(--font-family);
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: var(--primary-text);
+  background-color: var(--contrast-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -----------------------------------------------
+   2) GLOBAL STYLES
+----------------------------------------------- */
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  /* No flex layout so the hero can scroll or show if needed. */
+  background-color: var(--contrast-bg);
+  color: var(--primary-text);
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Headings */
+h1, h2, h3 {
+  text-align: center;
+  color: var(--primary-text);
+}
+
+h1 {
+  margin: 5px 0;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+/* Buttons */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  color: var(--primary-bg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Layout utilities */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* -----------------------------------------------
+   3) TOP BAR & FOOTER
+----------------------------------------------- */
+
+header {
+  width: 100%;
+  background-color: var(--primary-bg);
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+footer {
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
+  text-align: center;
+  padding: 10px;
+}
+
+.desktop-nav {
+  display: flex;
+}
+
+.hamburger-icon {
+  display: none;
+}
+
+/* -----------------------------------------------
+   4) FORMS
+----------------------------------------------- */
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+}
+
+/* -----------------------------------------------
+   5) HERO (BANNER) SECTION
+----------------------------------------------- */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero at 70vh */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background-image:
+    /* A subtle fade if you like: */
+    linear-gradient(to bottom, rgba(0,0,0,0) 85%, rgba(0,0,0,0.4) 100%),
+    url('/BeaconLight3.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+/* Optional overlay, could be removed if you're already using the fade. */
+.hero-overlay {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  text-align: left;
+  /*
+    Bump up the top padding so the h1 never collides with the bar 
+    even if the screen is wide (reducing vertical space).
+  */
+  padding-top: 6rem; /* Increase if you still see overlap, e.g. 8rem or 10rem */
+}
+
+/* Force bigger margin between h1 & top bar. 
+   If your bar is ~70px tall, 6rem = 96px should be enough in most cases. */
+.hero-content h1 {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.2;
+  color: #fff !important;
+}
+
+.hero-content p {
+  margin: 0;
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  line-height: 1.4;
+  color: #fff !important;
+}
+
+/* -----------------------------------------------
+   6) INFO CARDS
+----------------------------------------------- */
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #fff;
+  padding: 60px 20px;
+}
+
+.info-card {
+  width: 300px;
+  height: 220px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  background-color: #f4f4f4;
+  transform: translateY(-15px);
+}
+
+.info-card p {
+  white-space: pre-line;
+  font-size: 1rem;
+  color: #000;
+}
+
+/* -----------------------------------------------
+   7) MEDIA QUERIES
+----------------------------------------------- */
+
+@media (max-width: 1000px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .hamburger-icon {
+    display: block !important;
+  }
+
+  /* If you need more or less top padding on smaller screens, adjust here. */
+  .hero-content {
+    padding-top: 5rem;
+  }
+  .hero-content h1 {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+  .hero-content p {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+
+  .info-card {
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding-top: 4rem;
+  }
+  .hero-content h1 {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+  .hero-content p {
+    font-size: clamp(0.9rem, 4.5vw, 1.1rem);
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
+

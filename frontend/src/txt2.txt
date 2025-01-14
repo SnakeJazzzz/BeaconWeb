@@ -1,30 +1,35 @@
+
 import React from "react";
 
 const HomePage = () => {
   return (
-    <div className="homepage-wrapper">
+    <div>
       {/* Hero Section */}
-      <section className="hero">
+      <div
+        className="hero"
+        style={{ backgroundImage: "url('/BeaconLight3.svg')" }}
+      >
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="text-container">
-            <h1>
-              Cuando decides que en tu negocio participe tu
-              familia, ya sea en la operación o como accionista, es cuando te
-              conviertes en una Empresa Familiar.
-            </h1>
-            <p>
-              En las Empresas Familiares le agregas un
-              elemento más al éxito de tu negocio: el saber
-              planear, comunicar e implementar la transición
-              generacional.
-            </p>
-          </div>
+          <h1>
+            Cuando decides que en tu negocio participe tu
+            familia, ya sea en la operación o como accionista, es cuando te
+            conviertes en una Empresa Familiar.
+          </h1>
+          <p>
+            En las Empresas Familiares le agregas un
+            
+            elemento más al éxito de tu negocio: el saber
+        
+            planear, comunicar e implementar la transición
+            
+            generacional.
+          </p>
         </div>
-      </section>
+      </div>
 
       {/* Info Cards Section */}
-      <section className="info-cards">
+      <div className="info-cards">
         {[
           `Transición de generaciones
 de Ownership y de
@@ -44,7 +49,7 @@ o ejecutivos.`,
             <p>{text}</p>
           </div>
         ))}
-      </section>
+      </div>
     </div>
   );
 };
