@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const TopBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +16,6 @@ const TopBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu whenever location changes (e.g., user clicks a link)
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
@@ -28,6 +27,8 @@ const TopBar = () => {
     { label: "Consejos", path: "/consejos" },
     { label: "Contacto", path: "/contact" },
   ];
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header
@@ -80,14 +81,14 @@ const TopBar = () => {
           style={{
             marginLeft: "auto",
             cursor: "pointer",
-            fontSize: "1.5rem",
+            fontSize: "2rem", // Increased size
             display: "none", // will override in CSS for small screens
             color: scrolled ? "#000000" : "#ffffff",
             transition: "color 0.3s ease",
           }}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          &#9776; {/* Unicode hamburger menu icon */}
+          &#9776;
         </div>
 
         {/* Nav Links (Desktop) */}
@@ -99,20 +100,24 @@ const TopBar = () => {
             marginLeft: "auto",
           }}
         >
-          {navItems.map(({ label, path }, i) => (
-            <a
-              key={i}
-              href={path}
+          {navItems.map(({ label, path }) => (
+            <Link
+              key={path}
+              to={path}
               style={{
                 textDecoration: "none",
                 color: scrolled ? "#000000" : "#ffffff",
                 fontSize: "1rem",
-                fontWeight: 500,
+                fontWeight: isActive(path) ? 600 : 500,
                 transition: "color 0.3s ease",
+                borderBottom: isActive(path) 
+                  ? `2px solid ${scrolled ? "#000000" : "#ffffff"}`
+                  : "2px solid transparent",
+                padding: "5px 0",
               }}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
@@ -133,20 +138,22 @@ const TopBar = () => {
             zIndex: 999,
           }}
         >
-          {navItems.map(({ label, path }, i) => (
-            <div key={i} style={{ padding: "10px 20px", borderBottom: "1px solid #ccc" }}>
-              <a
-                href={path}
+          {navItems.map(({ label, path }) => (
+            <div key={path} style={{ padding: "10px 20px", borderBottom: "1px solid #ccc" }}>
+              <Link
+                to={path}
                 style={{
                   textDecoration: "none",
                   color: scrolled ? "#000" : "#fff",
                   fontSize: "1rem",
-                  fontWeight: 500,
+                  fontWeight: isActive(path) ? 600 : 500,
                   transition: "color 0.3s ease",
+                  display: "block",
+                  width: "100%",
                 }}
               >
                 {label}
-              </a>
+              </Link>
             </div>
           ))}
         </div>
